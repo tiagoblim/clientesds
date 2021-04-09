@@ -13,7 +13,7 @@
                     Cliente cadastrado/atualizado com sucesso.
                 </div>
                 <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
-                    {{error}}
+                    {{ error }}
                 </div>
             </div>
         </div>
@@ -50,8 +50,16 @@
 
         <div class="row">
             <div class="col-md-2">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" *ngIf="!cliente.id">
                     <i class="fa fa-save"></i> Salvar
+                </button>
+
+                <button type="submit" class="btn btn-primary" *ngIf="cliente.id">
+                    <i class="fa fa-sync-alt"></i> Atualizar
+                </button>
+
+                <button type="button" class="btn btn-primary" (click)="voltarParaListagem()">
+                    <i class="fa fa-arrow-alt-circle-left"></i> Voltar
                 </button>
             </div>
         </div>
