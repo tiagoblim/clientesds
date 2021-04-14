@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { Cliente } from './clientes/cliente';
-import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientesService {
 
-  path: string = 'http://localhost:8080/api';
+  path: string = environment.apiURL + '/api/clientes';
 
   constructor(
     private http: HttpClient
@@ -28,7 +29,7 @@ export class ClientesService {
   }
 
   getClienteById( id: number ) : Observable<Cliente> {
-    return this.http.get<any>(`/api/${id}`);
+    return this.http.get<any>(this.path + `/${id}`);
   }
 
   deletar( cliente: Cliente ) : Observable<any> {
