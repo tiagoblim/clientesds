@@ -32,7 +32,7 @@ public class ApplicationControllerAdvice {
 
     // Tratativa para excessões de requests falhas
     public ResponseEntity handleResponseStatusException (ResponseStatusException ex) {
-        String mensagemErro = ex.getMessage();
+        String mensagemErro = ex.getReason();
         HttpStatus codigoStatus = ex.getStatus();
         ApiErrors apiErrors = new ApiErrors(mensagemErro);
 
